@@ -1,0 +1,13 @@
+services:
+  discord-speedrun-bot:
+    image: ghcr.io/sebiann/discord-speedrun-moderation-bot:latest
+    container_name: discord-speedrun-bot
+    restart: unless-stopped
+    user: '${PUID:-1000}:${PGID:-1000}'
+    environment:
+      - TOKEN=
+      - CHANNEL_ID=
+      - PING_ROLE=
+      - SPEEDRUN_GAME_ID=
+    volumes:
+      - ./data:/app/data
