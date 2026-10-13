@@ -7,7 +7,7 @@ RUN npm ci --omit=dev
 
 COPY src/ ./src/
 
-RUN mkdir -p data && chown node:node data
+RUN mkdir -p /app/data && chown node:node /app/data
 
 USER node
 CMD ["node", "--import", "tsx", "src/Bot.ts"]
