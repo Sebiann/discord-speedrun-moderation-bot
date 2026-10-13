@@ -18,13 +18,11 @@ async function saveSeen(ids: Set<string>) {
   await fs.promises.rename(cacheFile + '.tmp', cacheFile);
 }
 
-const baseUrl =
-  'https://www.speedrun.com/api/v1/runs?status=new&orderBy=submitted&max=200&direction=desc&game=';
+const baseUrl = 'https://www.speedrun.com/api/v1/runs?status=new&max=200&game=';
 
 type Run = {
   id: string;
   weblink: string;
-  submitted: string;
 };
 
 async function getNewRuns(gameId: string): Promise<Run[]> {

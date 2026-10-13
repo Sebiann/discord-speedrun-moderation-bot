@@ -3,9 +3,7 @@ import { checkForNewRuns } from '../speedrun';
 
 export default (client: Client): void => {
   client.on('clientReady', async () => {
-    if (!client.user || !client.application) {
-      return;
-    }
+    if (!client.user) return;
 
     console.log(`${client.user.username} is online`);
 
@@ -18,8 +16,10 @@ export default (client: Client): void => {
 
       await channel.send(`<@&${process.env.PING_ROLE}>`);
 
-      for (const run of runs) console.log(`New run to verify: ${run.weblink}`);
-      for (const run of runs) await channel.send(`New run to verify: ${run.weblink}`);
+      for (const run of runs) {
+        console.log(`New run to verify: ${run.weblink}`);
+        await channel.send(`New run to verify: ${run.weblink}`);
+      }
     };
 
     await poll();
