@@ -7,7 +7,8 @@ services:
     environment:
       - TOKEN=
       - CHANNEL_ID=
-      - PING_ROLE=
+      - PING_USERS=
+      - PING_ROLES=
       - SPEEDRUN_GAME_ID=
     volumes:
       - ./data:/app/data
