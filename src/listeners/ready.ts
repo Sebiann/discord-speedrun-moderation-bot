@@ -14,17 +14,14 @@ export default (client: Client): void => {
       const channel = await client.channels.fetch(process.env.CHANNEL_ID!);
       if (!channel?.isSendable()) return console.error('CHANNEL_ID is not a sendable channel');
 
-      const rawRoles = process.env.PING_ROLES as string;
-      const rawUsers = process.env.PING_USERS as string;
+      const parseIds = (raw?: string) =>
+        (raw ?? '')
+          .split(',')
+          .map((id) => id.trim())
+          .filter(Boolean);
 
-      if (rawRoles !== '') {
-        const roles = rawRoles.split(',');
-        for (const role of roles) await channel.send(`<@&${role}>`);
-      }
-      if (rawUsers !== '') {
-        const users = rawUsers.split(',');
-        for (const user of users) await channel.send(`<@${user}>`);
-      }
+      for (const role of parseIds(process.env.PING_ROLES)) await channel.send(`<@&${role}>`);
+      for (const user of parseIds(process.env.PING_USERS)) await channel.send(`<@${user}>`);
 
       for (const run of runs) {
         console.log(`New run to verify: ${run.weblink}`);
