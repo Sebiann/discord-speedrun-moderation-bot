@@ -1,7 +1,6 @@
 {
   "name": "discord-speedrun-moderation-bot",
-  "version": "1.0.0",
-  "description": "",
+  "description": "Discord bot which checks for new runs to be verified.",
   "scripts": {
     "start": "tsx --env-file=.env src/Bot.ts",
     "format": "prettier --write .",
@@ -11,12 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Sebiann/discord-speedrun-moderation-bot.git"
   },
-  "keywords": [],
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/Sebiann/discord-speedrun-moderation-bot/issues"
-  },
-  "homepage": "https://github.com/Sebiann/discord-speedrun-moderation-bot#readme",
   "dependencies": {
     "discord.js": "^14.27.0",
     "tsx": "^4.23.15"
