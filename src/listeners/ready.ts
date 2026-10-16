@@ -30,6 +30,7 @@ export default (client: Client): void => {
     };
 
     await poll();
-    setInterval(poll, 15 * 60 * 1000);
+
+    setInterval(poll, (Number(process.env.INTERVAL_MINUTES) || 15) * 60 * 1000);
   });
 };

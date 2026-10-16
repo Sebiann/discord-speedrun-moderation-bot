@@ -10,5 +10,6 @@ services:
       - PING_USERS=
       - PING_ROLES=
       - SPEEDRUN_GAME_ID=
+      - INTERVAL_MINUTES=
     volumes:
       - ./data:/app/data
